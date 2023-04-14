@@ -1,3 +1,10 @@
+<turbo-stream action="prepend" target="quotes">
+  <template>
+    <turbo-frame id="quote_123">
+      <!-- The HTML for the quote partial -->
+    </turbo-frame>
+  </template>
+</turbo-stream>
 <%= turbo_frame_tag quote do %>
   <div class="quote">
     <%= link_to quote.name,
