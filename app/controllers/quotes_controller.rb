@@ -1,4 +1,3 @@
-
 class QuotesController < ApplicationController
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
 
@@ -36,6 +35,7 @@ class QuotesController < ApplicationController
         render :edit, status: :unprocessable_entity
       end
     end
+
     def destroy
       @quote.destroy
     
@@ -43,6 +43,10 @@ class QuotesController < ApplicationController
         format.html { redirect_to quotes_path, notice: "Quote was successfully destroyed." }
         format.turbo_stream { flash.now[:notice] = "Quote was successfully destroyed." }
       end
+    end
+
+    def quote_params
+      params.require(:quote).permit(:name)
     end
     private
 
@@ -52,7 +56,5 @@ class QuotesController < ApplicationController
       @quote = current_company.quotes.find(params[:id])
     end
 
-    def quote_params
-      params.require(:quote).permit(:name)
-    end
+  
 end
