@@ -10,7 +10,7 @@ class LineItemDatesTest < ApplicationSystemTestCase
 
     visit quote_path(@quote)
   end
-
+  include ActionView::Helpers::NumberHelper
   test "Creating a new line item date" do
     assert_selector "h1", text: "First quote"
 
@@ -46,6 +46,6 @@ test "Destroying a line item date" do
     end
   end
   
-    assert_no_text I18n.l(Date.current, format: :long)
+  assert_text number_to_currency(@quote.total_price)
   end
 end
