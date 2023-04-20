@@ -1,6 +1,7 @@
 equire "application_system_test_case"
 
 class LineItemDatesTest < ApplicationSystemTestCase
+ 
   setup do
     login_as users(:accountant)
 
